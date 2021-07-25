@@ -131,7 +131,7 @@ echo "${ZIP}"
 telegram_post(){
  if [ -f $(pwd)/out/target/product/${T_DEVICE}/${ZIPNAME} ]; then
 	rclone copy ${ZIP} remote:/noob/${rom} -P
-	rclone copy ${T_DEVICE}.json remote:/noob/${rom} -P
+	rclone copy $(pwd)/out/target/product/${T_DEVICE}/daisy.json remote:/noob/${rom} -P
 	MD5CHECK=$(md5sum ${ZIP} | cut -d' ' -f1)
 	DWD=${TDRIVE}${rom}/${ZIPNAME}
 	telegram_message "
