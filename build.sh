@@ -43,8 +43,6 @@ rom_three(){
      git clone ${TOKEN}/local -b $rom .repo/local_manifests
 	 repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
      source build/envsetup.sh && lunch xdroid_daisy-userdebug
-	 export SELINUX_IGNORE_NEVERALLOWS=true
-     export SKIP_ABI_CHECKS=true
 }
 
 # setup TG message and build posts
@@ -120,7 +118,7 @@ case "${rom}" in
     ;;
  "aicp") brunch daisy | tee build.log
     ;;
- "xdroid") make xd -j$(nproc --all) | tee build.log
+ "xdroid") make xd -j18 2>&1 | tee build.log
     ;;
  *) echo "Invalid option!"
     exit 1
