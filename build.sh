@@ -38,6 +38,15 @@ rom_two(){
      . build/envsetup.sh && lunch aicp_daisy-userdebug && export SELINUX_IGNORE_NEVERALLOWS=true
 }
 
+rom_three(){
+     repo init --depth=1 --no-repo-verify -u https://github.com/xdroid-CAF/xd_manifest -b eleven -g default,-device,-mips,-darwin,-notdefault
+     git clone ${TOKEN}/local -b $rom .repo/local_manifests
+	 repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
+     source build/envsetup.sh && lunch xdroid_daisy-userdebug
+	 export SELINUX_IGNORE_NEVERALLOWS=true
+     export SKIP_ABI_CHECKS=true
+}
+
 # setup TG message and build posts
 telegram_message() {
 	curl -s -X POST "https://api.telegram.org/bot${BOTTOKEN}/sendMessage" -d chat_id="${CHATID}" \
@@ -69,6 +78,8 @@ case "${rom}" in
  "derp") rom_one
     ;;
  "aicp") rom_two
+    ;;
+ "xdroid") rom_three
     ;;
  *) echo "Invalid option!"
     exit 1
@@ -108,6 +119,8 @@ case "${rom}" in
  "derp") make bacon -j18 2>&1 | tee build.log
     ;;
  "aicp") brunch daisy | tee build.log
+    ;;
+ "xdroid") make xd -j$(nproc --all) | tee build.log
     ;;
  *) echo "Invalid option!"
     exit 1
