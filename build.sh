@@ -129,6 +129,8 @@ case "${rom}" in
     ;;
  "xdroid") make xd -j18 2>&1 | tee build.log
     ;;
+  "bootleg") make bacon -j18 2>&1 | tee build.log
+    ;;
  *) echo "Invalid option!"
     exit 1
     ;;
