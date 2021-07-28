@@ -45,6 +45,13 @@ rom_three(){
      source build/envsetup.sh && lunch xdroid_daisy-userdebug
 }
 
+rom_four(){
+     repo init --depth=1 --no-repo-verify -u https://github.com/Bootleggers-BrokenLab/manifest.git -b rimbon -g default,-device,-mips,-darwin,-notdefault
+     git clone ${TOKEN}/local -b $rom .repo/local_manifests
+     repo sync --no-tags --no-clone-bundle -j$(nproc --all)
+     . build/envsetup.sh && lunch bootleg_daisy-userdebug && export SELINUX_IGNORE_NEVERALLOWS=true
+}
+
 # setup TG message and build posts
 telegram_message() {
 	curl -s -X POST "https://api.telegram.org/bot${BOTTOKEN}/sendMessage" -d chat_id="${CHATID}" \
@@ -78,6 +85,8 @@ case "${rom}" in
  "aicp") rom_two
     ;;
  "xdroid") rom_three
+    ;;
+ "bootleg") rom_four
     ;;
  *) echo "Invalid option!"
     exit 1
