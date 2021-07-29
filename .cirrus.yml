@@ -1,5 +1,5 @@
 task:
-  name: rom
+  name: daisy
   timeout_in: 120m
   container:
     dockerfile: Dockerfile
