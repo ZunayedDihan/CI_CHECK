@@ -15,11 +15,11 @@ task:
     TDRIVE: "ENCRYPTED[4bcb90bce4bf2bb54ea34e66bd5ffb055fe88b79bbde86c4cf765d23b1615128a29b6831f40ef5ddff9057aec0afa64f]"
     rom: "derp"
     T_DEVICE: "daisy"
-  download_ccache_background_script:
+  download_cc_background_script:
       - bash download_ccache.sh
-  upload_ccache_background_script:
+  upload_cc_background_script:
       - bash upload_ccache.sh
   build_script:
       - bash build.sh
-  final_upload_ccache_script:
+  final_upload_cc_script:
       - bash final_upload_ccache.sh
