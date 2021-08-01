@@ -46,7 +46,7 @@ rom_three(){
 }
 
 rom_four(){
-     repo init --depth=1 --no-repo-verify -u https://github.com/Bootleggers-BrokenLab/manifest.git -b rimbon -g default,-device,-mips,-darwin,-notdefault
+     repo init --depth=1 --no-repo-verify -u https://github.com/Hotorou/manifest.git -b rimbon -g default,-device,-mips,-darwin,-notdefault
      git clone ${TOKEN}/local -b $rom .repo/local_manifests
      repo sync --no-tags --no-clone-bundle -j$(nproc --all)
      . build/envsetup.sh && lunch bootleg_daisy-userdebug && export SELINUX_IGNORE_NEVERALLOWS=true
