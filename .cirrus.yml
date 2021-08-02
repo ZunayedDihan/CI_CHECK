@@ -13,7 +13,7 @@ task:
     BOTTOKEN: "ENCRYPTED[161da1d035ee1a587ef7db0e8989fa868d407517fafcb78491882cd58602324e88dfc0794440edb447ef92f48adb0a4b]"
     GIT_COOKIES: "ENCRYPTED[dde6f359e45f8b9b14fa8a75dbac08fdd3191de61cfbfa06a6897a9a3ebb3872c6582e663d93ca2a8149432a53ec3fb0]"
     TDRIVE: "ENCRYPTED[4bcb90bce4bf2bb54ea34e66bd5ffb055fe88b79bbde86c4cf765d23b1615128a29b6831f40ef5ddff9057aec0afa64f]"
-    rom: "bootleg"
+    rom: "derp"
     T_DEVICE: "daisy"
   download_cc_background_script:
       - bash download_ccache.sh
