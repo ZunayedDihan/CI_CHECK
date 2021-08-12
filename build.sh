@@ -52,6 +52,10 @@ rom_four(){
      . build/envsetup.sh && lunch bootleg_daisy-userdebug && export SELINUX_IGNORE_NEVERALLOWS=true
 }
 
+recovery_one(){
+    git clone https://github.com/ZunayedDihan/ci-twrp-daisy-files -b pbrp-3.x /tmp/rom
+}
+
 # setup TG message and build posts
 telegram_message() {
 	curl -s -X POST "https://api.telegram.org/bot${BOTTOKEN}/sendMessage" -d chat_id="${CHATID}" \
@@ -87,6 +91,8 @@ case "${rom}" in
  "xdroid") rom_three
     ;;
  "bootleg") rom_four
+    ;;
+ "pbrp") recovery_one
     ;;
  *) echo "Invalid option!"
     exit 1
@@ -129,7 +135,9 @@ case "${rom}" in
     ;;
  "xdroid") make xd -j18 2>&1 | tee build.log
     ;;
-  "bootleg") make bacon -j18 2>&1 | tee build.log
+ "bootleg") make bacon -j18 2>&1 | tee build.log
+    ;;
+ "pbrp") bash build-twrp-circleci.sh | tee build.Log
     ;;
  *) echo "Invalid option!"
     exit 1
