@@ -35,7 +35,7 @@ rom_two(){
      repo init --depth=1 --no-repo-verify -u https://github.com/AICP/platform_manifest.git -b r11.1 -g default,-device,-mips,-darwin,-notdefault
      git clone ${TOKEN}/local -b $rom .repo/local_manifests
      repo sync --no-tags --no-clone-bundle -j$(nproc --all)
-     . build/envsetup.sh && lunch aicp_daisy-userdebug && export SELINUX_IGNORE_NEVERALLOWS=true
+     . build/envsetup.sh && lunch aicp_daisy-user
 }
 
 rom_three(){
